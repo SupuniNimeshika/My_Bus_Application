@@ -2,6 +2,7 @@ package com.example.supuni.mybusapplication;
 
 import android.app.Service;
 import android.bluetooth.BluetoothClass;
+import android.content.Context;
 import android.content.Intent;
 import android.location.Location;
 import android.location.LocationListener;
@@ -14,6 +15,19 @@ import android.support.annotation.Nullable;
  */
 
 public class GPSTracker extends Service implements LocationListener{
+
+    private final Context mContext;
+
+    boolean isGPSEnabled =false;
+
+    boolean isNetworkEnabled =false;
+
+    boolean canGetLocation =false;
+
+    Location location;
+    double latitude;
+    double longitude;
+
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
