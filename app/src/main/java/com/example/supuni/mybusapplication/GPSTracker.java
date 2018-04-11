@@ -1,16 +1,19 @@
 package com.example.supuni.mybusapplication;
 
+import android.Manifest;
 import android.app.LoaderManager;
 import android.app.Service;
 import android.bluetooth.BluetoothClass;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
 
 /**
  * Created by supuni on 4/11/18.
@@ -39,7 +42,7 @@ public class GPSTracker extends Service implements LocationListener{
         getLocation();
     }
 
-    public void getLocation(){
+    public Location getLocation(){
         try {
             locationManager =(LocationManager) mContext.getSystemService(LOCATION_SERVICE);
 
@@ -52,6 +55,37 @@ public class GPSTracker extends Service implements LocationListener{
             }
             else {
                 this.canGetLocation=true;
+                if(isNetworkEnabled){
+                    if(ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+                            != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this,Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED){
+                        return null;
+                    }
+                    locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER,MIN_TIME_BW_UPDATES,MIN_DISTANCE_FOR_UPDATES,this);
+
+                    if(locationManager != null){
+                        location =locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+
+                        if(location!= null){
+                            latitude =location.getLatitude();
+                            longitude =location.getLongitude();
+                        }
+                    }
+                }
+
+                if(isGPSEnabled){
+                    if(location ==null){
+                        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,MIN_TIME_BW_UPDATES,MIN_DISTANCE_FOR_UPDATES,this);
+
+                        if(locationManager != null){
+                            location =locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+
+                            if(location!= null){
+                                latitude =location.getLatitude();
+                                longitude =location.getLongitude();
+                            }
+                        }
+                    }
+                }
 
             }
         }catch (Exception e){
