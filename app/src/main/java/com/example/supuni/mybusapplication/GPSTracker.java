@@ -118,6 +118,10 @@ public class GPSTracker extends Service implements LocationListener{
         return longitude;
     }
 
+    public boolean canGetLocation(){
+        return this.canGetLocation;
+    }
+
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
