@@ -111,6 +111,13 @@ public class GPSTracker extends Service implements LocationListener{
         return latitude;
     }
 
+    public double getLongitude(){
+        if(location != null){
+            longitude =location.getLongitude();
+        }
+        return longitude;
+    }
+
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
