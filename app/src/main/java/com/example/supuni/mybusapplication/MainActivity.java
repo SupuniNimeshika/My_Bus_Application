@@ -46,6 +46,8 @@ public class MainActivity extends AppCompatActivity {
                     double latitude =gps.getLatitude();
                     double longitude =gps.getLongitude();
                     location.setText(latitude+" "+longitude);
+                    myRef =database.getReference("Location");
+                    myRef.setValue(latitude+","+longitude);
                 }else {
                     gps.showSettingAlert();
                 }
