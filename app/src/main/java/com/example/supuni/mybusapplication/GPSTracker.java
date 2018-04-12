@@ -1,10 +1,12 @@
 package com.example.supuni.mybusapplication;
 
 import android.Manifest;
+import android.app.AlertDialog;
 import android.app.LoaderManager;
 import android.app.Service;
 import android.bluetooth.BluetoothClass;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
@@ -12,6 +14,7 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.provider.Settings;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 
@@ -128,6 +131,35 @@ public class GPSTracker extends Service implements LocationListener{
         return null;
     }
 
+    public void showSettingAlert(){
+        AlertDialog.Builder alertDialog =new AlertDialog.Builder(mContext);
+
+        //Setting Dialog Title
+        alertDialog.setTitle("GPS is setting");
+
+        //Setting Dialog Message
+        alertDialog.setMessage("GPS is not enabled. Do you want to go to setting menu?");
+
+        //On pressing Setting Button
+        alertDialog.setPositiveButton("Settings", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Intent intent =new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                mContext.startActivity(intent);
+            }
+        });
+
+        //on pressing cancel button
+        alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+               dialog.cancel();
+            }
+        });
+
+        //Showing Alert Message
+        alertDialog.show();
+    }
     @Override
     public void onLocationChanged(Location location) {
 
