@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
                 if(gps.canGetLocation()){
                     double latitude =gps.getLatitude();
                     double longitude =gps.getLongitude();
+                    database =FirebaseDatabase.getInstance();
                     location.setText(latitude+" "+longitude);
                     myRef =database.getReference("Location");
                     myRef.setValue(latitude+","+longitude);
