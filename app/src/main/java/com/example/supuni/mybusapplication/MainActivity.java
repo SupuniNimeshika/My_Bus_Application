@@ -9,8 +9,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class MainActivity extends AppCompatActivity {
 
+    FirebaseDatabase database;
+    DatabaseReference myRef;
     Button btnShowLocation;
     private static final int REQUEST_CODE_PERMISSION =2;
     String mPermission = Manifest.permission.ACCESS_FINE_LOCATION;
