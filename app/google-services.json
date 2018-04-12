@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "43085002990",
+    "firebase_url": "https://mybusapplication-e1876.firebaseio.com",
+    "project_id": "mybusapplication-e1876",
+    "storage_bucket": "mybusapplication-e1876.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:43085002990:android:5706897c1f750efc",
+        "android_client_info": {
+          "package_name": "com.example.supuni.mybusapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "43085002990-hdj5qcr3ltlmvicekg3be57mb8mabpt9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.supuni.mybusapplication",
+            "certificate_hash": "8431b23173cc5b226f7ae971f822cb16bbe71e7d"
+          }
+        },
+        {
+          "client_id": "43085002990-0n758hhqn1crnq8p7ft0a4kjutr1avhh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBrytLNATW-7adjmm1VbWqL9RZBPfOu-9M"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "43085002990-0n758hhqn1crnq8p7ft0a4kjutr1avhh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
                 if(gps.canGetLocation()){
                     double latitude =gps.getLatitude();
                     double longitude =gps.getLongitude();
-                    location.setText(latitude+""+longitude);
+                    location.setText(latitude+" "+longitude);
                 }else {
                     gps.showSettingAlert();
                 }
