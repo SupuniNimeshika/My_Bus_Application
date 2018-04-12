@@ -94,6 +94,16 @@ public class GPSTracker extends Service implements LocationListener{
         return location;
     }
 
+    public void stopUsingGPS(){
+        if(locationManager !=null){
+            if(ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+                    != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this,Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                return;
+            }
+            locationManager.removeUpdates(GPSTracker.this);
+        }
+    }
+
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
